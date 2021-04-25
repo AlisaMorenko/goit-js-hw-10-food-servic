@@ -6,10 +6,13 @@ const Theme = {
 const switchEl = document.querySelector('#theme-switch-toggle');
 switchEl.addEventListener('change', onSwitchChange);
 
-document.body.classList.add(localStorage.getItem('Theme'));
-if (localStorage.getItem('Theme') === Theme.DARK) {
+if (localStorage.getItem('theme')) {
+  document.body.classList.add(localStorage.getItem('theme'));
+} else if (localStorage.getItem('Theme') === Theme.DARK) {
   document.body.classList.add(Theme.DARK);
   switchEl.checked = true;
+} else {
+  document.body.classList.add(Theme.LIGHT);
 }
 
 function onSwitchChange() {
